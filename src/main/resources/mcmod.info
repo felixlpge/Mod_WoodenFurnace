@@ -1,0 +1,16 @@
+[
+{
+  "modid": "woodenfurnace",
+  "name": "Wooden Furnace",
+  "description": "I know you ever wanted to have a wooden furnace",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["felixlpge"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
