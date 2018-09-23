@@ -8,5 +8,5 @@ class FurnaceTileEntity extends TileEntityFurnace{
 
   override def getInventoryStackLimit: Int =  1
 
-  override def getCookTime(stack: ItemStack): Int = 100
+  override def getCookTime(stack: ItemStack): Int = 1600
 }

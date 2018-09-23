@@ -1,6 +1,7 @@
 package de.felixlpge.woodenfurnace
 
 import de.felixlpge.woodenfurnace.blocks.WoodenFurnace
+import de.felixlpge.woodenfurnace.proxy.CommonProxy
 import net.minecraft.block.Block
 import net.minecraftforge.event.RegistryEvent
 import net.minecraftforge.fml.common.Mod
@@ -12,6 +13,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 object woodenfurnace {
   final val MODID = "woodenfurnace"
   final val VERSION = "1.0"
+
+  import net.minecraftforge.fml.common.SidedProxy
+
+  @SidedProxy(serverSide = "de.felixlpge.woodenfurnace.proxy.CommonProxy", clientSide = "de.felixlpge.woodenfurnace.proxy.ClientProxy")
+  var proxy: CommonProxy = _
+
+
   @EventHandler
   def preInit(event: FMLPreInitializationEvent): Unit ={
 
