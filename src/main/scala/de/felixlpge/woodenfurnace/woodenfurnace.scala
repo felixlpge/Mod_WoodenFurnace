@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
-@Mod(modid = woodenfurnace.MODID, version = woodenfurnace.VERSION, modLanguage = "scala")
+@Mod(modid = woodenfurnace.MODID, version = woodenfurnace.VERSION, modLanguage = "scala", name = "Wooden Furnace")
 object woodenfurnace {
   final val MODID = "woodenfurnace"
   final val VERSION = "1.0"
