@@ -3,6 +3,7 @@ package de.felixlpge.woodenfurnace
 import de.felixlpge.woodenfurnace.blocks.WoodenFurnace
 import de.felixlpge.woodenfurnace.proxy.CommonProxy
 import net.minecraft.block.Block
+import net.minecraft.item.Item
 import net.minecraftforge.event.RegistryEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.Mod.EventHandler
@@ -30,9 +31,13 @@ object woodenfurnace {
 }
 @Mod.EventBusSubscriber(modid = woodenfurnace.MODID)
 object RegistrationHandler{
+  val furnace = new WoodenFurnace
   @SubscribeEvent
   def registerBlocks(event: RegistryEvent.Register[Block]): Unit ={
-    val furnace = new WoodenFurnace
     event.getRegistry.register(furnace)
+  }
+  @SubscribeEvent
+  def registerItems(event: RegistryEvent.Register[Item]): Unit = {
+    event.getRegistry.registerAll(furnace.createItemBlock)
   }
 }

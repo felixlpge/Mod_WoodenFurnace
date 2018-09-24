@@ -7,7 +7,7 @@ import de.felixlpge.woodenfurnace.woodenfurnace
 import net.minecraft.block.BlockFurnace
 import net.minecraft.block.state.IBlockState
 import net.minecraft.creativetab.CreativeTabs
-import net.minecraft.init.Blocks
+import net.minecraft.init.Items
 import net.minecraft.item.Item
 
 class WoodenFurnace extends BlockFurnace(false) {
@@ -25,7 +25,7 @@ class WoodenFurnace extends BlockFurnace(false) {
 
   def createItemBlock: Item = new ItemBlock(this).setRegistryName(getRegistryName)
 
-  override def getItemDropped(state: IBlockState, rand: Random, fortune: Int): Item = Item.getItemFromBlock(Blocks.LOG)
+  override def getItemDropped(state: IBlockState, rand: Random, fortune: Int): Item = Items.COAL
 
 
 }
