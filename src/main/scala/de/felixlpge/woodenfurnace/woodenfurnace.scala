@@ -1,5 +1,6 @@
 package de.felixlpge.woodenfurnace
 
+import de.felixlpge.woodenfurnace.TileEntitys.FurnaceTileEntity
 import de.felixlpge.woodenfurnace.blocks.WoodenFurnace
 import de.felixlpge.woodenfurnace.proxy.CommonProxy
 import net.minecraft.block.Block
@@ -7,8 +8,9 @@ import net.minecraft.item.Item
 import net.minecraftforge.event.RegistryEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.Mod.EventHandler
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
+import net.minecraftforge.fml.common.event.{FMLPostInitializationEvent, FMLPreInitializationEvent}
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+import net.minecraftforge.fml.common.registry.GameRegistry
 
 @Mod(modid = woodenfurnace.MODID, version = woodenfurnace.VERSION, modLanguage = "scala", name = "Wooden Furnace")
 object woodenfurnace {
@@ -24,6 +26,11 @@ object woodenfurnace {
   @EventHandler
   def preInit(event: FMLPreInitializationEvent): Unit ={
 
+  }
+
+  @EventHandler
+  def postInit(event: FMLPostInitializationEvent): Unit ={
+    GameRegistry.registerTileEntity(classOf[FurnaceTileEntity], "tilentitywoodenfurnace")
   }
 
 
