@@ -1,5 +1,5 @@
 {
-  "parent": "block/furnace",
+  "parent": "woodenfurnace:block/woodenfurnace/woodenfurnace",
   "display": {
     "thirdperson": {
       "rotation": [ 10, -45, 170 ],
