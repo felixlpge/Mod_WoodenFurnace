@@ -8,7 +8,7 @@ import net.minecraft.block.BlockFurnace
 import net.minecraft.block.state.IBlockState
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.init.Items
-import net.minecraft.item.Item
+import net.minecraft.item.{Item, ItemBlock}
 
 class WoodenFurnace extends BlockFurnace(false) {
   setUnlocalizedName("woodenfurnace")
@@ -17,13 +17,17 @@ class WoodenFurnace extends BlockFurnace(false) {
 
   override def createNewTileEntity(worldIn: _root_.net.minecraft.world.World, meta: Int): _root_.net.minecraft.tileentity.TileEntity = new FurnaceTileEntity
 
-  def registerItemModel(itemBlock: Nothing): Unit = {
+  def registerItemModel(itemBlock: ItemBlock): Unit = {
     woodenfurnace.proxy.registerItemRenderer(itemBlock, 0, "woodenfurnace")
   }
 
   import net.minecraft.item.ItemBlock
 
-  def createItemBlock: Item = new ItemBlock(this).setRegistryName(getRegistryName)
+  def createItemBlock: ItemBlock = {
+    var item = new ItemBlock(this)
+    item.setRegistryName(getRegistryName)
+    item
+  }
 
   override def getItemDropped(state: IBlockState, rand: Random, fortune: Int): Item = Items.COAL
 
