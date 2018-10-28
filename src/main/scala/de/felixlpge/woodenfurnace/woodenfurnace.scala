@@ -2,6 +2,7 @@ package de.felixlpge.woodenfurnace
 
 import de.felixlpge.woodenfurnace.TileEntitys.FurnaceTileEntity
 import de.felixlpge.woodenfurnace.blocks.WoodenFurnace
+import de.felixlpge.woodenfurnace.config.ConfigLoader
 import de.felixlpge.woodenfurnace.proxy.CommonProxy
 import net.minecraft.block.Block
 import net.minecraft.item.{Item, ItemBlock}
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry
 object woodenfurnace {
   final val MODID = "woodenfurnace"
   final val VERSION = "1.1"
+  var config: ConfigLoader = _
 
   import net.minecraftforge.fml.common.SidedProxy
 
@@ -25,7 +27,7 @@ object woodenfurnace {
 
   @EventHandler
   def preInit(event: FMLPreInitializationEvent): Unit ={
-
+    config = new ConfigLoader("config/woodenfurnace.json", "{\"items_smelting\": 1}")
   }
 
   @EventHandler
