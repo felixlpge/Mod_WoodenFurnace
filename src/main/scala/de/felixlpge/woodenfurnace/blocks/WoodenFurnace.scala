@@ -16,6 +16,7 @@ import net.minecraft.world.World
 class WoodenFurnace extends BlockFurnace(false) {
   setUnlocalizedName("woodenfurnace")
   setRegistryName("woodenfurnace")
+  setHardness(1)
   setCreativeTab(CreativeTabs.MISC)
 
   override def createNewTileEntity(worldIn: _root_.net.minecraft.world.World, meta: Int): _root_.net.minecraft.tileentity.TileEntity = new FurnaceTileEntity
