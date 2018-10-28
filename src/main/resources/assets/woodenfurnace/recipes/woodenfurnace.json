@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "forge:ore_shaped",
   "pattern": [
     "AAA",
     "ASA",
@@ -7,8 +7,8 @@
   ],
   "key": {
     "A": {
-      "item": "minecraft:log",
-      "data": 0
+      "type": "forge:ore_dict",
+      "ore": "logWood"
     },
     "S": {
       "item": "minecraft:coal",
