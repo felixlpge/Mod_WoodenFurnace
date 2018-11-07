@@ -1,6 +1,6 @@
 package de.felixlpge.woodenfurnace.TileEntitys
 
-import de.felixlpge.woodenfurnace.woodenfurnace
+import de.felixlpge.woodenfurnace.{RegistrationHandler, woodenfurnace}
 import net.minecraft.init.Blocks
 import net.minecraft.item.ItemStack
 import net.minecraft.tileentity.TileEntityFurnace
@@ -18,6 +18,7 @@ class FurnaceTileEntity extends TileEntityFurnace {
   override def getCookTime(stack: ItemStack): Int = 1600
 
   override def update(): Unit = {
+    var burning = this.isBurning
     super.update()
     if (this.isBurning) {
       burned = true
@@ -39,6 +40,9 @@ class FurnaceTileEntity extends TileEntityFurnace {
     }
     if (burned) {
       burnedTicks = burnedTicks + 1
+    }
+    if (burning != this.isBurning){
+      RegistrationHandler.furnace.setState(world, pos)
     }
   }
 

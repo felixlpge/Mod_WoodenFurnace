@@ -3,12 +3,12 @@ package de.felixlpge.woodenfurnace.blocks
 import java.util.Random
 
 import de.felixlpge.woodenfurnace.TileEntitys.FurnaceTileEntity
-import de.felixlpge.woodenfurnace.woodenfurnace
+import de.felixlpge.woodenfurnace.{RegistrationHandler, woodenfurnace}
 import net.minecraft.block.BlockFurnace
 import net.minecraft.block.state.IBlockState
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.init.Items
-import net.minecraft.item.{Item, ItemBlock}
+import net.minecraft.item.{Item, ItemBlock, ItemStack}
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.text.TextComponentTranslation
 import net.minecraft.world.World
@@ -50,6 +50,36 @@ class WoodenFurnace extends BlockFurnace(false) {
     false
   }
   override def getItemDropped(state: IBlockState, rand: Random, fortune: Int): Item = Items.COAL
+
+  def setState(worldIn: World, pos: BlockPos): Unit ={
+    val iblockstate = worldIn.getBlockState(pos)
+    var tileentity: FurnaceTileEntity = worldIn.getTileEntity(pos).asInstanceOf[FurnaceTileEntity]
+    val item0: ItemStack = new ItemStack(tileentity.getStackInSlot(0).getItem, 1)
+    val item1: ItemStack = new ItemStack(tileentity.getStackInSlot(1).getItem, 1)
+    val item2: ItemStack = new ItemStack(tileentity.getStackInSlot(2).getItem, 1)
+    worldIn.setBlockState(pos, RegistrationHandler.furnace.getDefaultState.withProperty(BlockFurnace.FACING, iblockstate.getValue(BlockFurnace.FACING)), 3)
+    worldIn.setBlockState(pos, RegistrationHandler.furnace.getDefaultState.withProperty(BlockFurnace.FACING, iblockstate.getValue(BlockFurnace.FACING)), 3)
+    if (tileentity != null) {
+      tileentity.validate()
+      worldIn.setTileEntity(pos, tileentity)
+      tileentity = worldIn.getTileEntity(pos).asInstanceOf[FurnaceTileEntity]
+      tileentity.setInventorySlotContents(0, item0)
+      tileentity.setInventorySlotContents(1, item1)
+      tileentity.setInventorySlotContents(2, item2)
+    }
+  }
+
+  override def breakBlock(worldIn: World, pos: BlockPos, state: IBlockState): Unit = {
+    super.breakBlock(worldIn, pos, state)
+    /*if (!true) {
+      val tileentity = worldIn.getTileEntity(pos)
+      if (tileentity.isInstanceOf[TileEntityFurnace]) {
+        InventoryHelper.dropInventoryItems(worldIn, pos, tileentity.asInstanceOf[TileEntityFurnace])
+        worldIn.updateComparatorOutputLevel(pos, this)
+      }
+      worldIn.removeTileEntity(pos)
+    }*/
+  }
 
 
 }
