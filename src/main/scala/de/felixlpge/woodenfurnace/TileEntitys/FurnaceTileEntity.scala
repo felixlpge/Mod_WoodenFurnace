@@ -11,6 +11,7 @@ class FurnaceTileEntity extends TileEntityFurnace {
 
   var burned = false
   var burnedTicks = 0
+  var outTicks = 0
   val maxTime: Int = Integer.parseInt(woodenfurnace.config.getConfigOption("items_smelting")) * 1610
 
   override def getInventoryStackLimit: Int = 1
@@ -20,9 +21,6 @@ class FurnaceTileEntity extends TileEntityFurnace {
   override def update(): Unit = {
     var burning = this.isBurning
     super.update()
-    if (this.isBurning) {
-      burned = true
-    }
     if (!this.world.isRemote && burnedTicks >= maxTime) {
       world.destroyBlock(pos, false)
       this.world.spawnParticle(EnumParticleTypes.LAVA, pos.getX, pos.getY, pos.getZ, 1.0, 1.0, 1.0)
@@ -42,7 +40,16 @@ class FurnaceTileEntity extends TileEntityFurnace {
       burnedTicks = burnedTicks + 1
     }
     if (burning != this.isBurning){
-      RegistrationHandler.furnace.setState(world, pos)
+      if (outTicks > 10 || !burned){
+        RegistrationHandler.furnace.setState(world, pos)
+        outTicks = 0
+      }else{
+        outTicks = outTicks + 1
+      }
+
+    }
+    if (this.isBurning) {
+      burned = true
     }
   }
 
