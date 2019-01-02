@@ -5,9 +5,10 @@ import java.util.Random
 import de.felixlpge.woodenfurnace.TileEntitys.FurnaceTileEntity
 import de.felixlpge.woodenfurnace.{RegistrationHandler, woodenfurnace}
 import net.minecraft.block.BlockFurnace
+import net.minecraft.block.material.Material
 import net.minecraft.block.state.IBlockState
 import net.minecraft.creativetab.CreativeTabs
-import net.minecraft.init.Items
+import net.minecraft.init.{Blocks, Items}
 import net.minecraft.item.{Item, ItemBlock, ItemStack}
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.text.TextComponentTranslation
@@ -57,6 +58,9 @@ class WoodenFurnace extends BlockFurnace(false) {
     val item0: ItemStack = new ItemStack(tileentity.getStackInSlot(0).getItem, 1)
     val item1: ItemStack = new ItemStack(tileentity.getStackInSlot(1).getItem, 1)
     val item2: ItemStack = new ItemStack(tileentity.getStackInSlot(2).getItem, 1)
+    tileentity.setInventorySlotContents(0, new ItemStack(Blocks.AIR))
+    tileentity.setInventorySlotContents(1, new ItemStack(Blocks.AIR))
+    tileentity.setInventorySlotContents(2, new ItemStack(Blocks.AIR))
     worldIn.setBlockState(pos, RegistrationHandler.furnace.getDefaultState.withProperty(BlockFurnace.FACING, iblockstate.getValue(BlockFurnace.FACING)), 3)
     worldIn.setBlockState(pos, RegistrationHandler.furnace.getDefaultState.withProperty(BlockFurnace.FACING, iblockstate.getValue(BlockFurnace.FACING)), 3)
     if (tileentity != null) {
