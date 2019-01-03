@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry
 @Mod(modid = woodenfurnace.MODID, version = woodenfurnace.VERSION, modLanguage = "scala", name = "Wooden Furnace")
 object woodenfurnace {
   final val MODID = "woodenfurnace"
-  final val VERSION = "1.1"
+  final val VERSION = "1.2"
   var config: ConfigLoader = _
 
   import net.minecraftforge.fml.common.SidedProxy
