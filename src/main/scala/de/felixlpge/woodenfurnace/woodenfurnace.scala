@@ -1,7 +1,7 @@
 package de.felixlpge.woodenfurnace
 
 import de.felixlpge.woodenfurnace.TileEntitys.FurnaceTileEntity
-import de.felixlpge.woodenfurnace.blocks.WoodenFurnace
+import de.felixlpge.woodenfurnace.blocks.{WoodenFurnace, WoodenLever}
 import de.felixlpge.woodenfurnace.config.ConfigLoader
 import de.felixlpge.woodenfurnace.proxy.CommonProxy
 import net.minecraft.block.Block
@@ -42,14 +42,19 @@ object woodenfurnace {
 object RegistrationHandler{
   val furnace = new WoodenFurnace
   var furnaceItem: ItemBlock = _
+  val lever = new WoodenLever
+  var leverItem: ItemBlock = _
   @SubscribeEvent
   def registerBlocks(event: RegistryEvent.Register[Block]): Unit ={
     event.getRegistry.register(furnace)
+    event.getRegistry.register(lever)
   }
   @SubscribeEvent
   def registerItems(event: RegistryEvent.Register[Item]): Unit = {
     furnaceItem = furnace.createItemBlock
-    event.getRegistry.registerAll(furnaceItem)
+    leverItem = lever.createItemBlock
+    event.getRegistry.registerAll(furnaceItem, leverItem)
     furnace.registerItemModel(furnaceItem)
+    lever.registerItemModel(leverItem)
   }
 }

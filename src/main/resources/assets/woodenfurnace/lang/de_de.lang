@@ -1,2 +1,5 @@
 tile.woodenfurnace.name=Hölzernder Ofen
+tile.woodenfurnace:lever.name=Hölzernder Hebel
+
 noplace=Hier ist kein Platz für etwas brennendes
+hurtWood=Ein Splitter des Holzes ist in deinen Finger abgerutscht.
