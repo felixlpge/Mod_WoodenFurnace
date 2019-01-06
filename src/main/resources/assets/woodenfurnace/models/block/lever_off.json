@@ -1,0 +1,8 @@
+{
+    "parent": "block/lever_off",
+    "textures": {
+        "particle": "blocks/log_oak_top",
+        "base": "blocks/log_oak_top",
+        "lever": "woodenfurnace:block/lever"
+    }
+}
