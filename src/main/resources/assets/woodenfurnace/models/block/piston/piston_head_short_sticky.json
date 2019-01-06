@@ -1,0 +1,8 @@
+{
+    "parent": "block/piston_head_short_sticky",
+    "textures": {
+        "unsticky": "woodenfurnace:block/piston_top_normal",
+        "side": "woodenfurnace:block/piston_side",
+        "platform": "woodenfurnace:block/piston_top_sticky"
+    }
+}

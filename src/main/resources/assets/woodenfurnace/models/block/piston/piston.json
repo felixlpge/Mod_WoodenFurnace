@@ -1,0 +1,6 @@
+{
+    "parent": "block/piston",
+    "textures": {
+        "particle": "#side"
+    }
+}

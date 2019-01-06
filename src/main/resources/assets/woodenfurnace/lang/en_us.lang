@@ -1,5 +1,6 @@
 tile.woodenfurnace.name=Wooden Furnace
 tile.woodenfurnace:lever.name=Woodenlever
+tile.woodenpiston.name=Woodenpiston
 
 noplace=There is no place for the Furnace
 hurtWood=A piece of wood got into your finger

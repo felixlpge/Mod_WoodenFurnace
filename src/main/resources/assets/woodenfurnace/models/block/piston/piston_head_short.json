@@ -1,0 +1,6 @@
+{
+    "parent": "block/piston_head_short",
+    "textures": {
+        "particle": "#platform"
+    }
+}

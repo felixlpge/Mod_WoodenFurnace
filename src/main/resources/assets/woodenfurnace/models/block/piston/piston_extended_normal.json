@@ -1,0 +1,8 @@
+{
+    "parent": "block/piston_extended_normal",
+    "textures": {
+        "bottom": "woodenfurnace:block/piston_bottom",
+        "side": "woodenfurnace:block/piston_side",
+        "inside": "woodenfurnace:block/piston_inner"
+    }
+}
