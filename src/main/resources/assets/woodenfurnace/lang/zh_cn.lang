@@ -1,2 +1,6 @@
 tile.woodenfurnace.name=木熔炉
-noplace=这里没有地方可放熔炉。
+tile.woodenfurnace:lever.name=木拉杆
+tile.woodenpiston.name=木活塞
+
+noplace=这里没有地方可放熔炉
+hurtWood=一块木屑卡在了你的手指里
