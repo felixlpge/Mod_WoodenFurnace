@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.item.crafting.FurnaceRecipes
 import net.minecraft.tileentity.TileEntityFurnace
 import net.minecraft.util.EnumParticleTypes
-import net.minecraftforge.client.model.obj.OBJModel.Material
+import java.lang.Boolean
 
 
 class FurnaceTileEntity extends TileEntityFurnace {
@@ -17,7 +17,8 @@ class FurnaceTileEntity extends TileEntityFurnace {
   var burnedItemTicks = 0
   var maxBurn = 0
   var outTicks = 0
-  val maxTime: Int = Integer.parseInt(woodenfurnace.config.getConfigOption("items_smelting")) * 1500
+  private val maxTime: Int = Integer.parseInt(woodenfurnace.config.getConfigOption("items_smelting")) * 1500
+  private val fire_activated: Boolean = Boolean.valueOf(woodenfurnace.config.getConfigOption("fire_when_smelting"))
 
   override def getInventoryStackLimit: Int = Integer.parseInt(woodenfurnace.config.getConfigOption("items_smelting"))
 
@@ -46,7 +47,7 @@ class FurnaceTileEntity extends TileEntityFurnace {
       world.setBlockToAir(pos)
       this.world.spawnParticle(EnumParticleTypes.LAVA, pos.getX, pos.getY, pos.getZ, 1.0, 1.0, 1.0)
     }
-    if (this.isBurning) {
+    if (this.isBurning && fire_activated) {
       this.world.setBlockState(pos.add(0, 1, 0), Blocks.FIRE.getDefaultState, 11)
       this.world.setBlockState(pos.add(1, 0, 0), Blocks.FIRE.getDefaultState, 11)
       this.world.setBlockState(pos.add(0, 0, 1), Blocks.FIRE.getDefaultState, 11)

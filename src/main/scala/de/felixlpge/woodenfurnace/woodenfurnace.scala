@@ -27,7 +27,7 @@ object woodenfurnace {
 
   @EventHandler
   def preInit(event: FMLPreInitializationEvent): Unit ={
-    config = new ConfigLoader("config/woodenfurnace.json", "{\"items_smelting\": 1}")
+    config = new ConfigLoader("config/woodenfurnace.json", "{\"items_smelting\": 1, \"fire_when_smelting\": true}")
   }
 
   @EventHandler
@@ -44,20 +44,20 @@ object RegistrationHandler{
   var furnaceItem: ItemBlock = _
   val lever = new WoodenLever
   var leverItem: ItemBlock = _
-  val piston = new WoodenPiston
-  var pistonItem: ItemBlock = _
+//  val piston = new WoodenPiston
+//  var pistonItem: ItemBlock = _
   @SubscribeEvent
   def registerBlocks(event: RegistryEvent.Register[Block]): Unit ={
-    event.getRegistry.registerAll(furnace, lever, piston)
+    event.getRegistry.registerAll(furnace, lever)
   }
   @SubscribeEvent
   def registerItems(event: RegistryEvent.Register[Item]): Unit = {
     furnaceItem = furnace.createItemBlock
     leverItem = lever.createItemBlock
-    pistonItem = piston.createItemBlock
-    event.getRegistry.registerAll(furnaceItem, leverItem, pistonItem)
+//    pistonItem = piston.createItemBlock
+//    event.getRegistry.registerAll(furnaceItem, leverItem, pistonItem)
     furnace.registerItemModel(furnaceItem)
     lever.registerItemModel(leverItem)
-    piston.registerItemModel(pistonItem)
+//    piston.registerItemModel(pistonItem)
   }
 }

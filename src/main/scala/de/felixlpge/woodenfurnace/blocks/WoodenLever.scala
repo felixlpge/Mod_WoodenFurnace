@@ -4,6 +4,7 @@ import java.util.Random
 
 import de.felixlpge.woodenfurnace.woodenfurnace
 import net.minecraft.block.BlockLever
+import net.minecraft.block.properties.PropertyBool
 import net.minecraft.block.state.IBlockState
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
