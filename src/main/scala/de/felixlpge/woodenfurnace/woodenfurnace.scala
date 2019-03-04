@@ -55,7 +55,7 @@ object RegistrationHandler{
     furnaceItem = furnace.createItemBlock
     leverItem = lever.createItemBlock
 //    pistonItem = piston.createItemBlock
-//    event.getRegistry.registerAll(furnaceItem, leverItem, pistonItem)
+    event.getRegistry.registerAll(furnaceItem, leverItem)
     furnace.registerItemModel(furnaceItem)
     lever.registerItemModel(leverItem)
 //    piston.registerItemModel(pistonItem)

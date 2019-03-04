@@ -26,16 +26,16 @@ class FurnaceTileEntity extends TileEntityFurnace {
 
   override def update(): Unit = {
     var burning = this.isBurning
-    if (TileEntityFurnace.getItemBurnTime(getStackInSlot(1)) > 0 && getStackInSlot(0).getCount != 0){
+    if (TileEntityFurnace.getItemBurnTime(getStackInSlot(1)) > 0 && getStackInSlot(0).getCount != 0) {
       maxBurn += TileEntityFurnace.getItemBurnTime(getStackInSlot(1))
     }
     super.update()
-    if (TileEntityFurnace.getItemBurnTime(getStackInSlot(1)) > 0 && maxBurn > 0){
+    if (TileEntityFurnace.getItemBurnTime(getStackInSlot(1)) > 0 && maxBurn > 0) {
       maxBurn -= TileEntityFurnace.getItemBurnTime(getStackInSlot(1))
     }
-    if(burnedItemTicks == 1500){
+    if (burnedItemTicks == 1500) {
       var tile = world.getTileEntity(pos).asInstanceOf[FurnaceTileEntity]
-      if (tile != null){
+      if (tile != null) {
         var item = new EntityItem(world, pos.getX, pos.getY, pos.getZ, FurnaceRecipes.instance().getSmeltingResult(tile.getStackInSlot(0)))
         world.spawnEntity(item)
       }
@@ -48,17 +48,26 @@ class FurnaceTileEntity extends TileEntityFurnace {
       this.world.spawnParticle(EnumParticleTypes.LAVA, pos.getX, pos.getY, pos.getZ, 1.0, 1.0, 1.0)
     }
     if (this.isBurning && fire_activated) {
-      this.world.setBlockState(pos.add(0, 1, 0), Blocks.FIRE.getDefaultState, 11)
-      this.world.setBlockState(pos.add(1, 0, 0), Blocks.FIRE.getDefaultState, 11)
-      this.world.setBlockState(pos.add(0, 0, 1), Blocks.FIRE.getDefaultState, 11)
-      this.world.setBlockState(pos.add(1, 0, 1), Blocks.FIRE.getDefaultState, 11)
-      this.world.setBlockState(pos.add(-1, 0, 0), Blocks.FIRE.getDefaultState, 11)
-      this.world.setBlockState(pos.add(0, 0, -1), Blocks.FIRE.getDefaultState, 11)
-      this.world.setBlockState(pos.add(-1, 0, -1), Blocks.FIRE.getDefaultState, 11)
-      this.world.setBlockState(pos.add(-1, 0, 1), Blocks.FIRE.getDefaultState, 11)
-      this.world.setBlockState(pos.add(1, 0, -1), Blocks.FIRE.getDefaultState, 11)
+      if (this.world.getBlockState(pos).getBlock != Blocks.OBSIDIAN)
+        this.world.setBlockState(pos.add(0, 1, 0), Blocks.FIRE.getDefaultState, 11)
+      if (this.world.getBlockState(pos.add(1, -1, 0)).getBlock != Blocks.OBSIDIAN)
+        this.world.setBlockState(pos.add(1, 0, 0), Blocks.FIRE.getDefaultState, 11)
+      if (this.world.getBlockState(pos.add(0, -1, 1)).getBlock != Blocks.OBSIDIAN)
+        this.world.setBlockState(pos.add(0, 0, 1), Blocks.FIRE.getDefaultState, 11)
+      if (this.world.getBlockState(pos.add(1, -1, 1)).getBlock != Blocks.OBSIDIAN)
+        this.world.setBlockState(pos.add(1, 0, 1), Blocks.FIRE.getDefaultState, 11)
+      if (this.world.getBlockState(pos.add(-1, -1, 0)).getBlock != Blocks.OBSIDIAN)
+        this.world.setBlockState(pos.add(-1, 0, 0), Blocks.FIRE.getDefaultState, 11)
+      if (this.world.getBlockState(pos.add(0, -1, -1)).getBlock != Blocks.OBSIDIAN)
+        this.world.setBlockState(pos.add(0, 0, -1), Blocks.FIRE.getDefaultState, 11)
+      if (this.world.getBlockState(pos.add(-1, -1, -1)).getBlock != Blocks.OBSIDIAN)
+        this.world.setBlockState(pos.add(-1, 0, -1), Blocks.FIRE.getDefaultState, 11)
+      if (this.world.getBlockState(pos.add(-1, -1, 1)).getBlock != Blocks.OBSIDIAN)
+        this.world.setBlockState(pos.add(-1, 0, 1), Blocks.FIRE.getDefaultState, 11)
+      if (this.world.getBlockState(pos.add(1, -1, -1)).getBlock != Blocks.OBSIDIAN)
+        this.world.setBlockState(pos.add(1, 0, -1), Blocks.FIRE.getDefaultState, 11)
     }
-    if (burning != this.isBurning && !burned){
+    if (burning != this.isBurning && !burned) {
       RegistrationHandler.furnace.setState(world, pos)
     }
     if (burned) {
